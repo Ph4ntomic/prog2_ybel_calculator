@@ -43,15 +43,21 @@ public class Calculator extends JFrame {
         operations = new HashMap<>();
         operations.put("Add", new Add());
 
-        // TODO
-        // Add a new operation "Sub" for the subtraction of two integers as an (instance of a) Java
-        // class (you have yet to write this class)
+        // Sub als normale eigene Klasse.
+        operations.put("Sub", new Sub());
 
-        // TODO
-        // Add a new operation "Mul" for the multiplication of two integers as an anonymous class
+// Mul als anonyme Klasse.
+        operations.put(
+            "Mul",
+            new Operation() {
+                @Override
+                public int doOperation(int a, int b) {
+                    return a * b;
+                }
+            });
 
-        // TODO
-        // Add a new operation "Div" for the division of two integers as a lambda expression
+// Div als Lambda-Ausdruck.
+        operations.put("Div", (a, b) -> a / b);
 
         operationSelector = new JComboBox<>();
         operations.forEach((key, value) -> operationSelector.addItem(key));
